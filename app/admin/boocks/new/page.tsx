@@ -24,12 +24,12 @@ const FormSchema = z.object({
     }),
 })
 
-export default function SaveSools() {
+export default function Saveshool() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
             name: "Genilso",
-            email: "genilso@gmail.com",
+            email: "genilsocarraro@gmail.com",
         },
     })
 
