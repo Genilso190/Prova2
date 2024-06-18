@@ -11,7 +11,7 @@ import {
   } from "@/components/ui/table"
 import { revalidatePath } from "next/cache"
 
-  interface IBook{
+  interface ILaptop{
     id:number,
     title:string,
     description: string,
