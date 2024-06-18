@@ -17,20 +17,18 @@ import {
 import { Input } from "@/components/ui/input"
 
 const FormSchema = z.object({
-    name: z.string().min(2, {
+    title: z.string().min(2, {
         message: "Necessário mais que dois caracteres.",
     }),
-    descricao: z.string().descricao({
-        message: "Digite a descrição"
-    }),
+    description: z.string()
 })
 
-export default function Savesbook() {
+export default function SaveBook() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
-            name: "Genilso",
-            descricao: "genilsocarraro@gmail.com",
+            title: "Genilso",
+            description: "lalala",
         },
     })
 
@@ -40,7 +38,7 @@ export default function Savesbook() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(book)
         }
-        const response = await fetch("https://server20241-beige.vercel.app/boocks", requestOptions)
+        const response = await fetch("https://server20241-beige.vercel.app/books", requestOptions)
         form.reset();
         alert("Livro Cadastrado!")
     }
@@ -50,7 +48,7 @@ export default function Savesbook() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
                 <FormField
                     control={form.control}
-                    name="nome"
+                    name="title"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Nome:</FormLabel>
@@ -63,7 +61,7 @@ export default function Savesbook() {
                 />
                 <FormField
                     control={form.control}
-                    name="descrição"
+                    name="description"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>descrição:</FormLabel>
