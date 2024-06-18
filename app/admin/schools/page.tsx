@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ListSchool from "./listSchool";
+import ListSchool from "./List";
 
 export default function School() {
     return (

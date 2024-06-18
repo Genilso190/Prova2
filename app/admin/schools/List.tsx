@@ -20,7 +20,7 @@ import { revalidatePath } from "next/cache"
     const schools = await list()
     async function list(){
       revalidatePath("/admin/schools")
-      const response = await fetch("https://server20241-beige.vercel.app/schools")
+      const response = await fetch("https://server20241-beige.vercel.app/schools");
         return response.json();
     }
 
