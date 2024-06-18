@@ -23,7 +23,7 @@ const FormSchema = z.object({
     description: z.string()
 })
 
-export default function SaveBook() {
+export default function SaveLaptop() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
@@ -32,15 +32,15 @@ export default function SaveBook() {
         },
     })
 
-    async function onSubmit(book: z.infer<typeof FormSchema>) {
+    async function onSubmit(laptop: z.infer<typeof FormSchema>) {
         const requestOptions= {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(book)
+            body: JSON.stringify(laptop)
         }
-        const response = await fetch("https://server20241-beige.vercel.app/books", requestOptions)
+        const response = await fetch("https://server20241-beige.vercel.app/laptops", requestOptions)
         form.reset();
-        alert("Livro Cadastrado!")
+        alert("computador Cadastrado!")
     }
 
     return (
@@ -51,9 +51,9 @@ export default function SaveBook() {
                     name="title"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>Nome:</FormLabel>
+                            <FormLabel>Modelo:</FormLabel>
                             <FormControl>
-                                <Input placeholder="Digite o nome do livro" {...field} />
+                                <Input placeholder="Digite o modelo do computador" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

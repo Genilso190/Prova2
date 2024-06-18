@@ -11,15 +11,15 @@ import {
   } from "@/components/ui/table"
 import { revalidatePath } from "next/cache"
 
-  interface ISchool{
+  interface Ileptp{
     id:number,
     name:string,
   }
   
-  export default async function ListSchool() {
-    const courses = await list()
+  export default async function Listleptp() {
+    const leptps = await list()
     async function list(){
-      revalidatePath("/admin/course")
+      revalidatePath("/admin/leptp")
       const response = await fetch("https://server20241-six.vercel.app/courses")
         return response.json();
     }
