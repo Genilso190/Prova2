@@ -6,7 +6,7 @@ export default function Laptop() {
         <div className="w-full flex flex-col  mt-6">
             <div className="flex justify-center mb-6">
                 <a href="/admin/laptop/new">
-                    <Button>Cadastrar Livro</Button>
+                    <Button>Cadastrar Computador</Button>
                 </a>
             </div>
             <ListLaptop />

@@ -11,46 +11,46 @@ import {
   } from "@/components/ui/table"
 import { revalidatePath } from "next/cache"
 
-  interface Ileptp{
+  interface IMonitor{
     id:number,
     name:string,
   }
   
-  export default async function Listleptp() {
-    const leptps = await list()
+  export default async function ListMonitor() {
+    const monitor = await list()
     async function list(){
-      revalidatePath("/admin/leptp")
-      const response = await fetch("https://server20241-six.vercel.app/courses")
+      revalidatePath("/admin/monitor")
+      const response = await fetch("https://server20241-beige.vercel.app/monitor");
         return response.json();
     }
 
-    async function deleteSchool(formData: FormData) {
+    async function deleteMonitor(formData: FormData) {
       "use server"
       const id = formData.get("id") as string;
-      const response = await fetch("https://server20241-six.vercel.app/courses/"+id, {method: "DELETE"});
-      revalidatePath("/admin/school")
+      const response = await fetch("https://server20241-beige.vercel.app/monitor/"+id, {method: "DELETE"});
+      revalidatePath("/admin/monitor")
   
     }
 
     return (
       <Table>
-        <TableCaption>Lista de Escola</TableCaption>
+        <TableCaption>Lista de Monitores</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">ID</TableHead>
             <TableHead>Nome</TableHead>
-            <TableHead>Descrição</TableHead>
+            <TableHead>Ação</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {courses.map((item:ISchool) => (
+          {monitor.map((item:IMonitor) => (
             <TableRow key={item.id}>
               <TableCell className="font-medium">{item.id}</TableCell>
               <TableCell>{item.name}</TableCell>
               <TableCell>
               <form>
                 <input type="text" hidden name="id" value={item.id} />
-                <Button variant="destructive" formAction={deleteSchool}>EXCLUIR</Button>
+                <Button variant="destructive" formAction={deleteMonitor}>EXCLUIR</Button>
               </form>
             </TableCell>
             </TableRow>
