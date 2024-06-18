@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
-import ListBoock from "./List";
+import ListBook from "./List";
 
 export default function Boock() {
     return (
         <div className="w-full flex flex-col  mt-6">
             <div className="flex justify-center mb-6">
-                <a href="/admin/course/new">
+                <a href="/admin/books/new">
                     <Button>Cadastrar Livro</Button>
                 </a>
             </div>
-            <ListBoock />
+            <ListBook />
         </div>
     )
 }

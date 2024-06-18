@@ -1,3 +1,4 @@
+"use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -19,29 +20,25 @@ const FormSchema = z.object({
     name: z.string().min(2, {
         message: "Necessário mais que dois caracteres.",
     }),
-    email: z.string().email({
-        message: "Digite o email correto"
-    }),
 })
 
-export default function SaveSools() {
+export default function SaveSchool() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
-            name: "Genilso",
-            email: "genilso@gmail.com",
+            name: "Escolinha",
         },
     })
 
-    async function onSubmit(shool: z.infer<typeof FormSchema>) {
+    async function onSubmit(school: z.infer<typeof FormSchema>) {
         const requestOptions= {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(shool)
+            body: JSON.stringify(school)
         }
-        const response = await fetch("https://server20241-six.vercel.app/boocks", requestOptions)
+        const response = await fetch("https://server20241-beige.vercel.app/schools", requestOptions)
         form.reset();
-        alert("Estudante Cadastrado!")
+        alert("Escola Cadastrado!")
     }
 
     return (
@@ -54,20 +51,7 @@ export default function SaveSools() {
                         <FormItem>
                             <FormLabel>Nome:</FormLabel>
                             <FormControl>
-                                <Input placeholder="Digite o nome do estudante" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email:</FormLabel>
-                            <FormControl>
-                                <Input placeholder="Digite o email do estudante" {...field} />
+                                <Input placeholder="Digite o nome da escola" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
