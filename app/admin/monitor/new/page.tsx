@@ -17,28 +17,28 @@ import {
 import { Input } from "@/components/ui/input"
 
 const FormSchema = z.object({
-    name: z.string().min(2, {
+    branch: z.string().min(2, {
         message: "Necessário mais que dois caracteres.",
     }),
 })
 
-export default function SaveSchool() {
+export default function SaveMonitor() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
-            name: "Escolinha",
+            branch: "lenovo",
         },
     })
 
-    async function onSubmit(school: z.infer<typeof FormSchema>) {
+    async function onSubmit(monitor: z.infer<typeof FormSchema>) {
         const requestOptions= {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(school)
+            body: JSON.stringify(monitor)
         }
-        const response = await fetch("https://server20241-beige.vercel.app/schools", requestOptions)
+        const response = await fetch("https://server20241-beige.vercel.app/monitor", requestOptions)
         form.reset();
-        alert("Escola Cadastrado!")
+        alert("Marca Cadastrado!")
     }
 
     return (
@@ -46,12 +46,12 @@ export default function SaveSchool() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
                 <FormField
                     control={form.control}
-                    name="name"
+                    name="branch"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Nome:</FormLabel>
                             <FormControl>
-                                <Input placeholder="Digite o nome da escola" {...field} />
+                                <Input placeholder="Digite a marca do monitor" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
