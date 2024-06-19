@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 
 const FormSchema = z.object({
-    title: z.string().min(2, {
+    model: z.string().min(2, {
         message: "Necessário mais que dois caracteres.",
     }),
     description: z.string()
@@ -27,7 +27,7 @@ export default function SaveLaptop() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
-            title: "Genilso",
+            model: "Genilso",
             description: "lalala",
         },
     })
@@ -40,7 +40,7 @@ export default function SaveLaptop() {
         }
         const response = await fetch("https://server20241-beige.vercel.app/laptops", requestOptions)
         form.reset();
-        alert("computador Cadastrado!")
+        alert("Computador Cadastrado!")
     }
 
     return (
@@ -48,12 +48,12 @@ export default function SaveLaptop() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
                 <FormField
                     control={form.control}
-                    name="title"
+                    name="model"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Modelo:</FormLabel>
                             <FormControl>
-                                <Input placeholder="Digite o modelo do computador" {...field} />
+                                <Input placeholder="Digite o modelo do Computador" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -64,9 +64,9 @@ export default function SaveLaptop() {
                     name="description"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel>descrição:</FormLabel>
+                            <FormLabel>Descrição:</FormLabel>
                             <FormControl>
-                                <Input placeholder="Digite a descrição" {...field} />
+                                <Input placeholder="Digite a Descrição" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

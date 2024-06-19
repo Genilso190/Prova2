@@ -13,7 +13,7 @@ import { revalidatePath } from "next/cache"
 
   interface IMonitor{
     id:number,
-    name:string,
+    brand:string,
   }
   
   export default async function ListMonitor() {
@@ -46,7 +46,7 @@ import { revalidatePath } from "next/cache"
           {monitor.map((item:IMonitor) => (
             <TableRow key={item.id}>
               <TableCell className="font-medium">{item.id}</TableCell>
-              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.brand}</TableCell>
               <TableCell>
               <form>
                 <input type="text" hidden name="id" value={item.id} />

@@ -13,7 +13,7 @@ import { revalidatePath } from "next/cache"
 
   interface ILaptop{
     id:number,
-    title:string,
+    model:string,
     description: string,
   }
   
@@ -47,7 +47,7 @@ import { revalidatePath } from "next/cache"
           {laptops.map((item:ILaptop) => (
             <TableRow key={item.id}>
               <TableCell className="font-medium">{item.id}</TableCell>
-              <TableCell>{item.title}</TableCell>
+              <TableCell>{item.model}</TableCell>
               <TableCell>{item.description}</TableCell>
               <TableCell>
               <form>

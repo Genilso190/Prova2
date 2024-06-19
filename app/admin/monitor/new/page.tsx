@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input"
 
 const FormSchema = z.object({
-    branch: z.string().min(2, {
+    brand: z.string().min(2, {
         message: "Necessário mais que dois caracteres.",
     }),
 })
@@ -26,7 +26,7 @@ export default function SaveMonitor() {
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
         defaultValues: { //valor que aparece por padrão
-            branch: "lenovo",
+            brand: "lenovo",
         },
     })
 
@@ -46,7 +46,7 @@ export default function SaveMonitor() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
                 <FormField
                     control={form.control}
-                    name="branch"
+                    name="brand"
                     render={({ field }) => (
                         <FormItem>
                             <FormLabel>Nome:</FormLabel>
